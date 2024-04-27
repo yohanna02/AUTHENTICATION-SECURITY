@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('partials/head', { title }); %>
+  </head>
+  <body>
+    <%- include('partials/navbar', { auth }); %>
+    <div class="container">
+        <% if (!error) { %>
+            <h1 class="text-center mt-5">Register User</h1>
+            <form action="/register-user" method="post" enctype="multipart/form-data" class="mb-5 w-50 mx-auto">
+                <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="name" name="name" required />
+                </div>
+                <div class="mb-3">
+                <label for="personnelNumber" class="form-label">Personnel Number</label>
+                <input type="text" class="form-control" id="personnelNumber" name="personnelNumber" required />
+                </div>
+                <div class="mb-3">
+                <label for="phone" class="form-label">Phone</label>
+                <input type="phone" class="form-control" id="phone" name="phone" required />
+                </div>
+                <div class="mb-3">
+                <label for="dob" class="form-label">Date of Birth</label>
+                <input type="date" class="form-control" id="dob" name="dob" required />
+                </div>
+                <div class="mb-3">
+                <label for="nextOfKins" class="form-label ">Next of Kins</label>
+                    <input type="text" class="form-control" id="nextOfKins" name="nextOfKins" required />
+                </div>
+                <!-- address -->
+                <div class="mb-3">
+                    <label for="address" class="form-label">Address</label>
+                    <textarea class="form-control" id="address" name="address" rows="3" required></textarea>
+                </div>
+                <div class="mb-3">
+                    <!-- select option for fingerprint Id -->
+                    <label for="fingerprintId" class="form-label">Fingerprint Id</label>
+                    <select class="form-select" id="fingerprintId" name="fingerprintId" required>
+                        <option selected disabled>Select Fingerprint Id</option>
+                        <% fingerprint.forEach(function(finger) { %>
+                            <option value="<%= finger.fingerprint %>"><%= finger.fingerprint %></option>
+                        <% }) %>
+                    </select>
+                </div>
+                <div class="mb-3">
+                <label for="picture" class="form-label">Picture</label>
+                <input type="file" class="form-control" id="picture" name="picture" required />
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        <% } else { %>
+            <div class="alert alert-danger" role="alert">
+                <%= error %>
+            </div>
+        <% } %>
+    </div>
+  </body>
+</html>
