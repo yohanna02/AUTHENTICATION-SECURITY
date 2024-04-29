@@ -31,6 +31,7 @@ type Person {
   id         String
   DOB        DateTime
   photo      String
+  public_id  String
   nextOfKins String
   phone      String
   address    String
