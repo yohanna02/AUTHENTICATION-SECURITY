@@ -7,17 +7,17 @@
     <%- include('partials/navbar', { auth }); %>
     <div class="container">
         <h1 class="text-center mt-5">Search</h1>
-        <form action="/search" method="get" class="mb-5 w-50 mx-auto">
+        <form action="/search" method="get" class="mb-5 mx-auto">
             <div class="mb-3">
                 <label for="fingerprintId" class="form-label">Fingerprint ID</label>
-                <input type="text" class="form-control" id="fingerprintId" name="fingerprintId" required />
+                <input type="text" class="form-control" id="fingerprintId" name="fingerprintId" value="<%= result ? result.fingerprint : '' %>" required />
                 <button class="btn btn-success mt-3" type="submit">Search</button>
             </div>
         </form>
         <!-- users data -->
-        <% if (result) { %>
+        <% if (result?.user) { %>
             <h4 class="text-center">Result</h4>
-            <div class="container w-50 mx-auto">
+            <div class="container mx-auto">
                 <form id="update-form" action="/update/<%= result.id%>" method="post" enctype="multipart/form-data" class="mb-5 mx-auto">
                     <label for="picture" class="form-label d-block" role="button">
                         <img src="<%= result.user.photo %>" class="img-fluid img-thumbnail rounded-circle w-25 d-block mx-auto">

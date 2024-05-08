@@ -8,6 +8,8 @@ RUN npm install
 
 COPY . .
 
+RUN cp views ./dist/ -r
+
 EXPOSE 3000
 
 RUN npx prisma generate
