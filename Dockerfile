@@ -9,6 +9,7 @@ RUN npm install
 COPY . .
 
 RUN cp views ./dist/ -r
+RUN cp public ./dist/ -r
 
 EXPOSE 3000
 
