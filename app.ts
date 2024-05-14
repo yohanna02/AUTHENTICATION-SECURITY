@@ -43,6 +43,7 @@ const server = http.createServer(app);
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
+app.use(express.static("public"));
 
 passport.use(new Strategy({
     jwtFromRequest: ExtractJwt.fromExtractors([req => req.cookies.token]),
